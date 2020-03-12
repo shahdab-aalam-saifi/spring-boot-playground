@@ -1,10 +1,9 @@
 package com.saalamsaifi.playground.springboot.service.impl;
 
-import org.springframework.stereotype.Component;
-
+import org.springframework.stereotype.Service;
 import com.saalamsaifi.playground.springboot.service.Operation;
 
-@Component
+@Service
 public class Multiplication implements Operation {
 	@Override
 	public boolean handles(char op) {
