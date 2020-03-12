@@ -6,6 +6,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import com.saalamsaifi.playground.springboot.model.Order;
+import com.saalamsaifi.playground.springboot.service.OrderService;
 import java.math.BigDecimal;
 import java.util.List;
 import org.junit.Test;
@@ -17,24 +20,27 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
-import com.saalamsaifi.playground.springboot.model.Order;
-import com.saalamsaifi.playground.springboot.service.OrderService;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(OrderController.class)
 public class OrderControllerTest {
-  @Autowired
-  private MockMvc mockMvc;
+  @Autowired private MockMvc mockMvc;
 
-  @MockBean
-  private OrderService orderService;
+  @MockBean private OrderService orderService;
 
   @Test
   public void foo() throws Exception {
     when(orderService.findAll()).thenReturn(List.of(new Order("1234", BigDecimal.TEN)));
-    MvcResult mvcResult = mockMvc.perform(get("/orders")).andExpect(request().asyncStarted())
-        .andDo(MockMvcResultHandlers.log()).andReturn();
-    mockMvc.perform(asyncDispatch(mvcResult)).andDo(MockMvcResultHandlers.log())
-        .andExpect(status().isOk()).andExpect(content().json("{\"id\":\"1234\",\"amount\":10}"));
+    MvcResult mvcResult =
+        mockMvc
+            .perform(get("/orders"))
+            .andExpect(request().asyncStarted())
+            .andDo(MockMvcResultHandlers.log())
+            .andReturn();
+    mockMvc
+        .perform(asyncDispatch(mvcResult))
+        .andDo(MockMvcResultHandlers.log())
+        .andExpect(status().isOk())
+        .andExpect(content().json("{\"id\":\"1234\",\"amount\":10}"));
   }
 }

@@ -1,13 +1,12 @@
 package com.saalamsaifi.playground.springboot.service;
 
+import com.saalamsaifi.playground.springboot.model.Book;
 import java.util.Optional;
 
-import com.saalamsaifi.playground.springboot.model.Book;
-
 public interface BookService {
-	Iterable<Book> findAll();
+  Iterable<Book> findAll();
 
-	Book create(Book book);
+  Book create(Book book);
 
-	Optional<Book> find(String isbn);
+  Optional<Book> find(String isbn);
 }

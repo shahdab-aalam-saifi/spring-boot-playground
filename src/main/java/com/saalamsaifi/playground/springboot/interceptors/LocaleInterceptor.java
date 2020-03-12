@@ -8,18 +8,18 @@ import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 public class LocaleInterceptor implements WebMvcConfigurer {
-	@Override
-	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(localeChangeInterceptor());
-	}
+  @Override
+  public void addInterceptors(InterceptorRegistry registry) {
+    registry.addInterceptor(localeChangeInterceptor());
+  }
 
-	@Bean
-	public LocaleChangeInterceptor localeChangeInterceptor() {
-		return new LocaleChangeInterceptor();
-	}
+  @Bean
+  public LocaleChangeInterceptor localeChangeInterceptor() {
+    return new LocaleChangeInterceptor();
+  }
 
-	@Bean
-	public LocaleResolver localeResolver() {
-		return new CookieLocaleResolver();
-	}
+  @Bean
+  public LocaleResolver localeResolver() {
+    return new CookieLocaleResolver();
+  }
 }

@@ -19,15 +19,20 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 @RunWith(SpringRunner.class)
 @WebMvcTest(HelloWorldController.class)
 public class HelloWorldControllerTest {
-	@Autowired
-	private MockMvc mockMvc;
+  @Autowired private MockMvc mockMvc;
 
-	@Test
-	public void testHelloWorldController() throws Exception {
-		MvcResult mvcResult = mockMvc.perform(get("/hello")).andExpect(request().asyncStarted())
-				.andDo(MockMvcResultHandlers.log()).andReturn();
-		mockMvc.perform(asyncDispatch(mvcResult)).andExpect(status().isOk())
-				.andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_PLAIN))
-				.andExpect(content().string("Hello World"));
-	}
+  @Test
+  public void testHelloWorldController() throws Exception {
+    MvcResult mvcResult =
+        mockMvc
+            .perform(get("/hello"))
+            .andExpect(request().asyncStarted())
+            .andDo(MockMvcResultHandlers.log())
+            .andReturn();
+    mockMvc
+        .perform(asyncDispatch(mvcResult))
+        .andExpect(status().isOk())
+        .andExpect(content().contentTypeCompatibleWith(MediaType.TEXT_PLAIN))
+        .andExpect(content().string("Hello World"));
+  }
 }

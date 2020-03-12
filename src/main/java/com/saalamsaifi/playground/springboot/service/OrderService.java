@@ -1,5 +1,6 @@
 package com.saalamsaifi.playground.springboot.service;
 
+import com.saalamsaifi.playground.springboot.model.Order;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +8,6 @@ import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 import javax.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
-import com.saalamsaifi.playground.springboot.model.Order;
 
 @Service
 public class OrderService {

@@ -1,5 +1,10 @@
 package com.saalamsaifi.playground.springboot;
 
+import com.saalamsaifi.playground.springboot.errorhandling.CustomizedErrorAttributes;
+import com.saalamsaifi.playground.springboot.model.Book;
+import com.saalamsaifi.playground.springboot.model.Calculator;
+import com.saalamsaifi.playground.springboot.service.BookService;
+import com.saalamsaifi.playground.springboot.service.Operation;
 import java.util.Collection;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -10,11 +15,6 @@ import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.AsyncSupportConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
-import com.saalamsaifi.playground.springboot.errorhandling.CustomizedErrorAttributes;
-import com.saalamsaifi.playground.springboot.model.Book;
-import com.saalamsaifi.playground.springboot.model.Calculator;
-import com.saalamsaifi.playground.springboot.service.BookService;
-import com.saalamsaifi.playground.springboot.service.Operation;
 
 @SpringBootApplication
 public class SpringBootPlaygroundApplication implements WebMvcConfigurer {
@@ -40,7 +40,7 @@ public class SpringBootPlaygroundApplication implements WebMvcConfigurer {
     return new CustomizedErrorAttributes();
   }
 
-//  @Bean
+  //  @Bean
   public ApplicationRunner booksInitializer(BookService bookService) {
     return args -> {
       bookService.create(new Book("9780061120084", "To Kill a Mockingbird", "Harper Lee"));
@@ -66,5 +66,4 @@ public class SpringBootPlaygroundApplication implements WebMvcConfigurer {
     taskExecutor.setThreadNamePrefix("mvc-task-");
     return taskExecutor;
   }
-
 }

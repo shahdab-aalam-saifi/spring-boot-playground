@@ -1,7 +1,7 @@
 package com.saalamsaifi.playground.springboot.service.impl;
 
-import org.springframework.stereotype.Service;
 import com.saalamsaifi.playground.springboot.service.Operation;
+import org.springframework.stereotype.Service;
 
 @Service
 public class Addition implements Operation {
@@ -14,5 +14,4 @@ public class Addition implements Operation {
   public int apply(int lhs, int rhs) {
     return lhs + rhs;
   }
-
 }
